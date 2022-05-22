@@ -15,7 +15,6 @@ import java.util.*;
 import static org.mockito.Mockito.*;
 import static pro.sky.courseworkquestionanswer.ObjectsForTests.*;
 
-@ExtendWith(MockitoExtension.class)
 public class QuestionServiceTest {
     QuestionService out = new JavaQuestionService();
 
@@ -55,10 +54,11 @@ public class QuestionServiceTest {
     @Test
     public void isCorrectRandom() {
         Random fakeRandom = mock(Random.class, withSettings().withoutAnnotations());
-        when(fakeRandom.nextInt()).thenReturn(1);
         out.add(QUESTION_1);
         out.add(QUESTION_2);
         out.add(QUESTION_3);
+        when(fakeRandom.nextInt()).thenReturn(1);
+        out.setRandom(fakeRandom);
         Assertions.assertEquals(out.getRandomQuestion(), QUESTION_2);
     }
 }

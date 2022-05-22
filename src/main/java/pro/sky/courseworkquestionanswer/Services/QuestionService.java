@@ -5,6 +5,7 @@ import pro.sky.courseworkquestionanswer.Exeptions.WrongRequestExeption;
 import pro.sky.courseworkquestionanswer.Question;
 
 import java.util.Collection;
+import java.util.Random;
 
 
 public interface QuestionService {
@@ -17,5 +18,7 @@ public interface QuestionService {
     Collection<Question> getAll();
 
     Question getRandomQuestion();
+
+    void setRandom(Random rand);
 
 }

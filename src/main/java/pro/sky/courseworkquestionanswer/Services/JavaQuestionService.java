@@ -13,9 +13,14 @@ import static java.lang.Math.abs;
 @Service
 public class JavaQuestionService implements QuestionService {
     private Set<Question> questions;
+    private Random rand = new Random();
 
     public JavaQuestionService() {
         this.questions = new HashSet<>();
+    }
+
+    public void setRandom(Random rand){
+        this.rand = rand;
     }
 
     public Question add(String question, String answer) {
@@ -52,8 +57,7 @@ public class JavaQuestionService implements QuestionService {
     }
 
     public Question getRandomQuestion() {
-        Random rand = new Random();
-        int i = abs(rand.nextInt() % questions.size());
+        int i = abs(rand.nextInt(questions.size()));
         List<Question> list = new ArrayList<>(questions);
         return list.get(i);
     }
